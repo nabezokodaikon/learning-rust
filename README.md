@@ -46,3 +46,10 @@ $ cargo check
 $ cargo build --release
 $ ./target/release/hello_cargo
 ```
+
+### ドキュメントの生成
+以下を実行すると、現在依存しているクレートを含むドキュメントを生成し、
+ウェブブラウザが起動する。
+```
+$ cargo doc --open 
+```
