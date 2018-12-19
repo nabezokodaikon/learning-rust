@@ -53,3 +53,8 @@ $ ./target/release/hello_cargo
 ```
 $ cargo doc --open 
 ```
+
+
+## 開発環境
+* [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
+* [rls](https://github.com/rust-lang/rls)
