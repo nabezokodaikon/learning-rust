@@ -58,3 +58,17 @@ $ cargo doc --open
 ## 開発環境
 * [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim)
 * [rls](https://github.com/rust-lang/rls)
+
+
+## メモ
+### 構造体でデバッグ用の情報を出力する
+```
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+let rect1 = Rectangle { width: 30, height: 50 };
+println!("rect1 is {:?}", rect1);
+```
