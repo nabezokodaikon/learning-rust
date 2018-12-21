@@ -19,6 +19,7 @@ enum IpAddr {
     // V6(String),
 // }
 
+#[derive(Debug)]
 enum Message {
     Quit,
     Move { x: i32, y: i32 },
@@ -53,6 +54,7 @@ fn main() {
     // let loopback = IpAddr::V6(String::from("::1"));
         
     let m = Message::Write(String::from("hello"));
+    println!("{:?}", m);
     m.call();
 
     let some_number = Some(5);
