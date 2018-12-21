@@ -72,3 +72,14 @@ struct Rectangle {
 let rect1 = Rectangle { width: 30, height: 50 };
 println!("rect1 is {:?}", rect1);
 ```
+
+### モジュールファイルシステムの規則
+* `foo`という名前ののモジュールにサブモジュールがなければ、`foo`の定義は`foo.rs`というファイルに書く。
+* `foo`というモジュールにサブモジュールがあったら、`foo`の定義は`foo/mod.rs`というファイルに書く。
+```
+├── foo
+│   ├── bar.rs (contains the declarations in `foo::bar`)
+│   │          (`foo::bar`内の定義を含む)
+│   └── mod.rs (contains the declarations in `foo`, including `mod bar`)
+               (`mod bar`を含む、`foo`内の定義を含む)
+```
