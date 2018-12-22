@@ -83,3 +83,8 @@ println!("rect1 is {:?}", rect1);
 │   └── mod.rs (contains the declarations in `foo`, including `mod bar`)
                (`mod bar`を含む、`foo`内の定義を含む)
 ```
+
+### macOS版のRustでpanic時のスタックトレースに行番号を出す
+```
+$ RUST_BACKTRACE=1 cargo run
+```
