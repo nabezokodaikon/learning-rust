@@ -1,0 +1,9 @@
+[package]
+name = "to_panic_or_not_to_panic"
+version = "0.1.0"
+authors = ["nabezokodaikon <nabezoko.daikon@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+rand = "0.6.1"
