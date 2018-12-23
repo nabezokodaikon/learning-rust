@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 fn largest_i32(list: &[i32]) -> i32 {
     let mut largest = list[0];
 
@@ -22,17 +24,17 @@ fn largest_char(list: &[char]) -> char {
     largest
 }
 
-// fn largest<T>(list: &[T]) -> T {
-    // let mut largest = list[0];
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    let mut largest = list[0];
 
-    // for &item in list.iter() {
-        // if item > largest {
-            // largest = item;
-        // }
-    // }
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
 
-    // largest;
-// }
+    largest
+}
 
 struct Point<T> {
     x: T,
@@ -65,6 +67,30 @@ impl<T, U> Point2<T, U> {
     }
 }
 
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self {
+            x,
+            y,
+        }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmd_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
+}
+
 fn main() {
     {
         let number_list = vec![34, 50, 25, 100, 65];
@@ -77,13 +103,13 @@ fn main() {
     }
 
     {
-        // let number_list = vec![34, 50, 25, 100, 65];
-        // let result = largest(&number_list);
-        // println!("The largest number is {}", result);
+        let number_list = vec![34, 50, 25, 100, 65];
+        let result = largest(&number_list);
+        println!("The largest number is {}", result);
 
-        // let char_list = vec!['y', 'm', 'a', 'q'];
-        // let result = largest(&char_list);
-        // println!("The largest char is {}", result);
+        let char_list = vec!['y', 'm', 'a', 'q'];
+        let result = largest(&char_list);
+        println!("The largest char is {}", result);
     }
 
     {
@@ -101,5 +127,12 @@ fn main() {
         let p2 = Point2 { x: "Hello", y: 'c' };
         let p3 = p1.mixup(p2);
         println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+    }
+
+    {
+        let p = Pair::new(1, 2);
+        p.cmd_display();
+        let p = Pair::new(Pair::new(1, 2), Pair::new(3, 4));
+        // p.cmd_display();
     }
 }
