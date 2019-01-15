@@ -1,4 +1,5 @@
 # Rust study
+[Rust by Example](https://doc.rust-jp.rs/rust-by-example-ja/)
 
 ## インストール
 ### インストール
@@ -15,6 +16,21 @@ $ rust self uninstall
 ### アップデート
 ```
 $ rustup update
+```
+
+### 開発環境構築
+```
+# 実行してツールチェインをアップデート
+$ rustup update nightly
+
+# 標準ライブラリのメタデータをダウンロード
+$ rustup component add --toolchain=nightly rust-analysis
+
+# rls本体をインストール
+$ rustup component add --toolchain=nightly rls-preview
+
+# rust本体のソースをダウンロード
+$ rustup component add --toolchain=nightly rust-src
 ```
 
 

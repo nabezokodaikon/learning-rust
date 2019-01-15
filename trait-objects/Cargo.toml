@@ -1,7 +1,0 @@
-[package]
-name = "trait-objects"
-version = "0.1.0"
-authors = ["nabezokodaikon <nabezoko.daikon@gmail.com>"]
-edition = "2018"
-
-[dependencies]
