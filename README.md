@@ -104,3 +104,7 @@ println!("rect1 is {:?}", rect1);
 ```
 $ RUST_BACKTRACE=1 cargo run
 ```
+
+### 読み方
+`&T` -> `ref T`と読む。
+`&mut T` -> `ref mute T`と読む。
