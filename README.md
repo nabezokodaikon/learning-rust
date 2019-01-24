@@ -105,6 +105,18 @@ println!("rect1 is {:?}", rect1);
 $ RUST_BACKTRACE=1 cargo run
 ```
 
+### REPL
+#### インストール
+```
+$ cargo install evcxr_repl
+```
+
+#### 開始
+```
+$ evcxr
+# 行の末尾にセミコロンを忘れないこと!
+```
+
 ### 読み方
 `&T` -> `ref T`と読む。
 `&mut T` -> `ref mute T`と読む。
