@@ -36,7 +36,7 @@ fn run_sorts(bits: u32) {
         num_cpus::get()
     );
 
-    let seq_duration = timed_sort(&par_sort, len, "seq_sort");
+    let seq_duration = timed_sort(&seq_sort, len, "seq_sort");
     let par_duration = timed_sort(&par_sort, len, "par_sort");
 
     println!("speed up: {:.2}x", seq_duration / par_duration);
