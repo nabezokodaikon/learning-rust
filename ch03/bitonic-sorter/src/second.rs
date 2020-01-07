@@ -71,6 +71,12 @@ mod tests {
             ]
         );
     }
+
+    // #[test]
+    // fn sort_f64() {
+    // let mut x = vec![20.0, -30.0, 11.0, 10.0];
+    // sort(&mut x, true);
+    // }
 }
 
 pub fn sort<T: Ord>(x: &mut [T], up: bool) {
