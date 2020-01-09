@@ -1,7 +1,37 @@
 #[cfg(test)]
 mod tests {
-    use super::sort;
+    use super::{is_power_of_two, sort, sort_by};
     use crate::SortOrder::*;
+
+    struct Student {
+        first_name: String,
+        last_name: String,
+        age: u8,
+    }
+
+    impl Student {
+        fn new(fist_name: &str, last_name: &str, age: u8) -> Self {
+            Self {
+                first_name: first_name.to_string(),
+                last_name: last_name.to_string(),
+                age,
+            }
+        }
+    }
+
+    #[test]
+    // 年齢で照準にソートする
+    fn sort_students_by_age_ascending() {
+        let taro = Student::new("Taro", "Yamada", 16);
+        let hanako = Student::new("Hanako", "Yamada", 14);
+        let kyoko = Student::new("Kyoko", "Ito", 15);
+        let ryosuke = Student::new("Ryoshuke", "Hayashi", 17);
+
+        let mut x = vec![&taro, &hanako, &kyoko, &ryosuke];
+        let expected = vec![&hanako, &kyoko, &taro, &ryosuke];
+
+        assert_eq!(sort_by(&mut x, &|a, b| a.age.cmp(&b.age)), Ok(()));
+    }
 }
 
 use super::SortOrder;
