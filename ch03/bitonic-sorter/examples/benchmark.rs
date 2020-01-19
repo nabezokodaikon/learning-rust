@@ -1,9 +1,9 @@
 use num_cpus;
 
-use crate::third::sort as seq_sort;
-use crate::third::sort as par_sort;
-use crate::utils::{is_sorted_ascending, new_u32_vec};
-use crate::SortOrder;
+use bitonic_sorter::third::sort as seq_sort;
+use bitonic_sorter::third::sort as par_sort;
+use bitonic_sorter::utils::{is_sorted_ascending, new_u32_vec};
+use bitonic_sorter::SortOrder;
 
 use std::str::FromStr;
 use std::time::Instant;
