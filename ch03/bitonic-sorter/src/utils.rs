@@ -3,9 +3,9 @@ use rand::{Rng, SeedableRng};
 use rand_pcg::Pcg64Mcg;
 
 mod tests {
+    use super::{is_sorted_ascending, is_sorted_descending, new_u32_vec};
     use crate::second::sort;
-    use crate::utils::{is_sorted_ascending, is_sorted_descending, new_u32_vec};
-    use crate::SortOrder::{Ascending, Descending};
+    use crate::SortOrder::*;
 
     #[test]
     fn sort_u32_large() {

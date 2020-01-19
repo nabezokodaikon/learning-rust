@@ -6,7 +6,6 @@ mod tests {
     }
 }
 
-pub mod examples;
 pub mod first;
 pub mod fourth;
 pub mod second;

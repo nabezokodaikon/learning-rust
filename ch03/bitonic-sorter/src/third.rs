@@ -54,7 +54,15 @@ mod tests {
     }
 }
 
+use crate::SortOrder;
 use std::cmp::Ordering;
+
+pub fn sort<T: Ord>(x: &mut [T], order: &SortOrder) -> Result<(), String> {
+    match *order {
+        SortOrder::Ascending => sort_by(x, &|a, b| a.cmp(b)),
+        SortOrder::Descending => sort_by(x, &|a, b| b.cmp(a)),
+    }
+}
 
 pub fn sort_by<T, F>(x: &mut [T], comparator: &F) -> Result<(), String>
 where
