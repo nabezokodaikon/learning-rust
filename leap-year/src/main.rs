@@ -19,6 +19,15 @@ fn main() {
     } else {
         println!("{} is not a leap year!", year);
     }
+
+    let mut counter = 0;
+    let ten = loop {
+        if counter == 10 {
+            break counter;
+        }
+        counter += 1;
+    };
+    println!("{}", ten);
 }
 
 // うるう年の場合は true 、 平年の場合は false を返す関数
