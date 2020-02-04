@@ -28,6 +28,11 @@ fn main() {
         counter += 1;
     };
     println!("{}", ten);
+
+    let mut one = 1;
+    let plus_one = move |x| x + one;
+    one += 1;
+    println!("10 + 1 = {}", plus_one(10));
 }
 
 // うるう年の場合は true 、 平年の場合は false を返す関数
