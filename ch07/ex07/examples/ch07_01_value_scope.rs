@@ -1,7 +1,7 @@
 use std::ops::Drop;
 
 #[derive(Debug)]
-struct Parent(usize, Child, Child);
+pub struct Parent(pub usize, pub Child, pub Child);
 
 impl Drop for Parent {
     fn drop(&mut self) {
@@ -10,7 +10,7 @@ impl Drop for Parent {
 }
 
 #[derive(Debug)]
-struct Child(usize);
+pub struct Child(pub usize);
 
 impl Drop for Child {
     fn drop(&mut self) {
