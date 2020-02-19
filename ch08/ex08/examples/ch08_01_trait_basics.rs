@@ -1,13 +1,13 @@
 // 座標
-trait Coordinates {
+pub trait Coordinates {
     fn to_cartesian(self) -> CartesianCoord;
     fn from_cartesian(cart: CartesianCoord) -> Self;
 }
 
 // デカルト座標
-struct CartesianCoord {
-    x: f64,
-    y: f64,
+pub struct CartesianCoord {
+    pub x: f64,
+    pub y: f64,
 }
 
 impl Coordinates for CartesianCoord {
@@ -21,9 +21,9 @@ impl Coordinates for CartesianCoord {
 }
 
 // 極座標
-struct PolarCoord {
-    r: f64,
-    theta: f64,
+pub struct PolarCoord {
+    pub r: f64,
+    pub theta: f64,
 }
 
 impl Coordinates for PolarCoord {
