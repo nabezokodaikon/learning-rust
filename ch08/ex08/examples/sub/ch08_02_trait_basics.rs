@@ -1,9 +1,8 @@
-mod ch08_01_trait_basics;
-use ch08_01_trait_basics::CartesianCoord;
-use ch08_01_trait_basics::Coordinates;
-use ch08_01_trait_basics::PolarCoord;
+use crate::sub::ch08_01_trait_basics::CartesianCoord;
+use crate::sub::ch08_01_trait_basics::Coordinates;
+use crate::sub::ch08_01_trait_basics::PolarCoord;
 
-fn print_point<P: Coordinates>(point: P) {
+pub fn print_point<P: Coordinates>(point: P) {
     let p = point.to_cartesian();
     println!("({}, {})", p.x, p.y);
 }
