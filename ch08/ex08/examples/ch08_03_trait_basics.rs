@@ -1,10 +1,10 @@
 mod ch08_01_trait_basics;
 mod ch08_02_trait_basics;
 
-use ch08_01_trait_basics::CartesianCoord;
-use ch08_01_trait_basics::Coordinates;
-use ch08_01_trait_basics::PolarCoord;
-use ch08_02_trait_basics::print_point;
+use crate::ch08_01_trait_basics::CartesianCoord;
+use crate::ch08_01_trait_basics::Coordinates;
+use crate::ch08_01_trait_basics::PolarCoord;
+use crate::ch08_02_trait_basics::print_point;
 
 struct Matrix([[f64; 2]; 2]);
 
