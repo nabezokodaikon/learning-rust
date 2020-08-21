@@ -1,10 +1,15 @@
 fn main() {
-    let mut a = 10;
-    a += 20;
-    println!("a is {}", a);
-    let mut sum = 0;
-    for i in 0..10 {
-        sum += i
+    let mut v = vec![1, 2, 3, 4, 5];
+    vec_change(&mut v);
+    for i in v {
+        print!("{} ", i);
     }
-    println!("sum is {}", sum);
+    println!();
+}
+
+fn vec_change(v: &mut Vec<i32>) {
+    println!("called vec_change");
+    for i in v {
+        *i = *i * 10;
+    }
 }
