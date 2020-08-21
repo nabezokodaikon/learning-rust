@@ -1,12 +1,23 @@
+#[derive(Debug)]
+enum LANG {
+    JAPANESE = 81,
+    ENGLISH = 44,
+    CHINESE = 86,
+    FRANCH = 33,
+}
+
+enum Option<T> {
+    Some(T),
+    None,
+}
+
 fn main() {
-    print!("LOOP is ");
-    let mut i = 0;
-    loop {
-        if i >= 10 {
-            break;
-        }
-        print!("{} ", i);
-        i += 1;
-    }
-    println!();
+    let x = 'C';
+    let m = match x {
+        'A' => 1,
+        'B' => 2,
+        'C' => 3,
+        _ => -1,
+    };
+    println!("m is {}", m);
 }
