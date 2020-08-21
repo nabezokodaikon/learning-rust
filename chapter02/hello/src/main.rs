@@ -1,15 +1,12 @@
 fn main() {
-    let mut v = vec![1, 2, 3, 4, 5];
-    vec_change(&mut v);
-    for i in v {
+    print!("LOOP is ");
+    let mut i = 0;
+    loop {
+        if i >= 10 {
+            break;
+        }
         print!("{} ", i);
+        i += 1;
     }
     println!();
-}
-
-fn vec_change(v: &mut Vec<i32>) {
-    println!("called vec_change");
-    for i in v {
-        *i = *i * 10;
-    }
 }
