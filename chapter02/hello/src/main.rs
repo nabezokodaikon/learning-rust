@@ -1,9 +1,7 @@
 fn main() {
-    let mut v = vec!["one", "two", "three", "four", "five"];
-    v.sort();
-    let x = v.join(" ");
-    println!("x is {}", x);
-    v.reverse();
-    let x = v.join(" ");
-    println!("x is {}", x);
+    let v = vec![1, 2, 3, 4, 5];
+    let lst = v.iter().map(|x| x * 10);
+    for i in lst {
+        println!("i is {}", i);
+    }
 }
