@@ -5,32 +5,50 @@ struct Person {
     addr: String,
 }
 
-fn print_person(pa: &Person) {
-    println!("{}: {} ({}) in {}", pa.id, pa.name, pa.age, pa.addr);
-}
+static mut PERSON_ID: i32 = 0;
 
-fn add_age(pa: &mut Person) {
-    pa.age += 1;
-}
+impl Person {
+    fn new(name: &str, age: i32, addr: &str) -> Person {
+        let id = unsafe {
+            PERSON_ID += 1;
+            PERSON_ID
+        };
+        Person {
+            id,
+            name: name.to_string(),
+            age,
+            addr: addr.to_string(),
+        }
+    }
 
-fn new_person(id: i32, name: &str) -> Person {
-    let pa = Person {
-        id: id,
-        name: name.to_string(),
-        age: -1,
-        addr: String::from("Unknown"),
-    };
-    pa
+    fn print(&self) {
+        println!("{}: {} ({}) in {}", self.id, self.name, self.age, self.addr);
+    }
+
+    fn print_t(&self, private: bool) {
+        if private {
+            println!("{}: {}", self.id, self.name);
+        } else {
+            println!("{}: {} ({}) in {}", self.id, self.name, self.age, self.addr);
+        }
+    }
+
+    fn to_str(&self) -> String {
+        format!("{}: {} ({}) in {}", self.id, self.name, self.age, self.addr)
+    }
+
+    fn add_age(&mut self, n: i32) {
+        self.age += 1;
+    }
 }
 
 fn main() {
-    let pa = new_person(100, "masdua");
-    let pa2 = new_person(200, "kato");
-    let mut people = vec![pa, pa2];
-    people.push(new_person(200, "yamada"));
-    people.push(new_person(200, "sato"));
-
+    let mut people = Vec::<Person>::new();
+    people.push(Person::new("masuda", 50, "Tokyo"));
+    people.push(Person::new("kato", 30, "Osaka"));
+    people.push(Person::new("yamada", -1, "unkonwn"));
+    people.push(Person::new("sato", -1, "unkonwn"));
     for p in &people {
-        print_person(p);
+        p.print();
     }
 }
