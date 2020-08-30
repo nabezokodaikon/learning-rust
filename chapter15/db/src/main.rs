@@ -1,11 +1,32 @@
 use rusqlite::{params, Connection, Result};
 
+#[derive(Debug)]
+struct User {
+    id: i32,
+    name: String,
+    age: i32,
+}
+
 fn create_db() -> Result<Connection> {
     let cn = Connection::open_in_memory()?;
     cn.execute(
         "CREATE TABLE users (id INTEGER, name TEXT, age INTEGER);",
         params![],
     )?;
+    Ok(cn)
+}
+
+fn create_table(cn: &Connection) -> Result<()> {
+    cn.execute(
+        "CREATE TABLE users (id INTEGER, name TEXT, age INTEGER);",
+        params![],
+    )?;
+    Ok(())
+}
+
+fn create_db_file() -> Result<Connection> {
+    let cn = Connection::open("sample.db")?;
+    println!("create database");
     Ok(cn)
 }
 
@@ -18,7 +39,7 @@ fn create_records(cn: &Connection) -> Result<()> {
     Ok(())
 }
 
-fn read_records(cn: &Connection) -> Result<()> {
+fn _read_records(cn: &Connection) -> Result<()> {
     let mut stmt = cn.prepare("SELECT * FROM users;")?;
     let mut rows = stmt.query(params![])?;
     while let Some(row) = rows.next()? {
@@ -30,9 +51,43 @@ fn read_records(cn: &Connection) -> Result<()> {
     Ok(())
 }
 
-fn main() {
-    let cn = create_db();
-    let cn = cn.unwrap();
-    create_records(&cn);
-    read_records(&cn);
+fn read_records2(cn: &Connection) -> Result<()> {
+    let mut stmt = cn.prepare("SELECT * FROM users WHERE age > ?")?;
+    let iter = stmt.query_map(params![15], |row| {
+        Ok(User {
+            id: row.get(0)?,
+            name: row.get(1)?,
+            age: row.get(2)?,
+        })
+    })?;
+
+    for it in iter {
+        println!("{:?}", it.unwrap());
+    }
+
+    Ok(())
+}
+
+fn main() -> Result<()> {
+    let args = std::env::args().collect::<Vec<String>>();
+    let cn = Connection::open("sample.db")?;
+    if args.len() <= 1 {
+    } else {
+        match args[1].as_str() {
+            "init" => {
+                create_table(&cn)?;
+                create_records(&cn)?;
+            }
+            _ => {
+                println!("parameter error.");
+            }
+        }
+    }
+
+    // create_db_file()?;
+    // let cn = create_db();
+    // let cn = cn.unwrap();
+    read_records2(&cn)?;
+
+    Ok(())
 }
