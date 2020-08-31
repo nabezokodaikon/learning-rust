@@ -1,0 +1,15 @@
+[package]
+name = "clang"
+version = "0.1.0"
+authors = ["nabezokodaikon <nabezoko.daikon@gmail.com>"]
+edition = "2018"
+links = "hello"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = "0.2.76"
+
+[build-dependencies]
+cc = "1.0.59"
