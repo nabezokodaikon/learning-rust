@@ -1,3 +1,4 @@
+edition = "2018"
 indent_style = "Block"
 where_single_line = false
 # max_width = 200
