@@ -13,3 +13,5 @@ Cargo.lock
 *.txt
 *.db
 *.a
+
+.DS_Store
