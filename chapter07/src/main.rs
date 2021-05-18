@@ -88,6 +88,15 @@ fn main() {
         let a = Point2::new(3., 5.);
         println!("x = {}, y = {}", a.x, a.y);
     }
+    {
+        let four = IpAddrKind::V4;
+        let six = IpAddrKind::V6;
+    }
+}
+
+enum IpAddrKind {
+    V4,
+    V6,
 }
 
 struct Point2 {
